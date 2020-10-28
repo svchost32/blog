@@ -1,0 +1,48 @@
+
+
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark big-logo">
+    <a class="navbar-brand mr-auto mr-lg-0" href="/"> Company  LOGO   </a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="navbar-collapse offcanvas-collapse main-menu" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Notifications</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Switch account</a>
+        </li>
+        <li class="nav-item dropdown disno">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+      {{ if user}}
+      <div id="loginout" class="logout">
+        <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="/setting">{{user.nickname}}</a>
+        <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="/logout">Logout</a>
+      </div>
+      {{ else }}
+      <div id="login" class="login">
+        <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="/login">Sign in</a>
+        <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="/register">Register</a>
+      </div>
+      {{ /if }}
+      
+      
+    </div>
+  </nav>
+
+  </div>

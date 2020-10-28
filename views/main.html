@@ -1,0 +1,211 @@
+{{extend '../_layout/layout.html'}}
+
+
+{{ block 'header'}}
+<link rel="stylesheet" href="/public/css/main.css">
+<style>
+  .message-content {
+    display: flex;
+    width: 100%;
+
+    /* position:relative; */
+    /* margin-right: auto; */
+  }
+
+  .message-content h6 {
+    /* position: absolute; */
+    /* margin-left: auto; */
+    /* background: black; */
+    /* font-size: 1.2rem; */
+  }
+
+  /* .message-content div{  
+    margin-left: auto;
+    font-size: 2rem;
+    color: #ecf0f1;
+    background: #34495e;
+    border-radius: 50%;
+  } */
+</style>
+{{/block}}
+
+{{ block 'content'}}
+
+
+<div class='mainstage'>
+  <div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+      <a class="nav-link active" href="#">  现存板块  </a>
+      <a class="nav-link" href="#">
+        Guests
+        <span class="badge badge-pill bg-light align-text-bottom">27</span>
+      </a>
+      <a class="nav-link" href="#">Updates</a>
+      <a class="nav-link" href="#">Guests</a>
+      <a class="nav-link" href="/login">login</a>
+      <a class="nav-link" href="/register">register</a>
+      <a class="nav-link " href="#">message</a>
+      <a class="nav-link menu-bar" href="#">
+        <div class="update btn-click-focus">
+          update
+        </div>
+      </a>
+      <a class="nav-link menu-bar" href="#">
+        <div class="comment btn-click-focus">
+          comments
+        </div>
+      </a>
+      <div class="searchbar my-2 my-lg-0 form-inline">
+        <form class="form-inline my-2 my-lg-0 search">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+        </form>
+      </div>
+
+
+    </nav>
+  </div>
+  <main role="main" class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+      <img class="mr-3" src="/public/img/logo.png" alt="" width="48" height="48">
+      <div class="lh-100">
+        <h6 class="mb-0 text-white lh-100">Jason Du</h6>
+        <small>Designed In Ashburn, VA @2020</small>
+      </div>
+    </div>
+
+    
+
+
+
+    {{ if error }}
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded shadow-sm  messagebox" style={{error.backcolor}} id="messagebox">
+      <img class="mr-3" src={{error.icon}} alt="" width="48" height="48">
+      <div class="lh-100 message-content">
+        <h6 class="mb-0 text-white lh-100">{{error.message}}</h6>
+     <!-- <small>Designed In Ashburn, VA @2020</small> -->
+      </div>
+    </div>
+    {{ /if }}
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm" id="update">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@username</strong>
+          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          condimentum nibh, ut fermentum massa justo sit amet risus.
+        </p>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#e83e8c" /><text x="50%" y="50%" fill="#e83e8c" dy=".3em">32x32</text>
+        </svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@username</strong>
+          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          condimentum nibh, ut fermentum massa justo sit amet risus.
+        </p>
+      </div>
+      <div class="media text-muted pt-3">
+        <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#6f42c1" /><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text>
+        </svg>
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <strong class="d-block text-gray-dark">@username</strong>
+          Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+          condimentum nibh, ut fermentum massa justo sit amet risus.
+        </p>
+      </div>
+      <small class="d-block text-right mt-3">
+        <a href="#">All updates</a>
+      </small>
+    </div>
+
+    <div class="my-3 p-3 bg-white rounded shadow-sm" id='comment'>
+      <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
+
+
+      {{ each comments }}
+      <div class="media text-muted pt-3">
+        <!-- <svg class="bd-placeholder-img mr-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 32x32">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#007bff" /><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
+        </svg> -->
+        <img class="bd-placeholder-img mr-2 rounded" src="/public/img/avatar-default.jpg" alt="" width="32" height="32">
+
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">{{$value.nickname}}</strong>
+            {{ if user}}
+            {{ if (user.nickname == $value.nickname)}}
+            <div>
+              <a href="#">Edit</a> | <a href="#">Delete</a>
+              <!-- <div>{{user._id}} | {{ $value.id }}</div>
+              <div>{{user.nickname}} | {{ $value.nickname }}</div> -->
+            </div>
+            {{ /if }}
+            {{ /if }}
+          </div>
+          <span class="d-block">{{$value.comments}}</span>
+        </div>
+      </div>
+      {{ /each }}
+
+      <small class="d-block text-right mt-3">
+        <a href="/comments">Add Comment</a>
+      </small>
+    </div>
+  </main>
+</div>
+{{/block}}
+
+{{block 'script'}}
+<script src="/public/js/main.js"></script>
+<script>
+  var comment = $('.comment');
+  comment.on('click', function () {
+    if (comment.hasClass('btn-click-default')) { //如果有‘test’的样式，就去除他的样式，添加‘active’的样式
+      comment.removeClass('btn-click-default').addClass('btn-click-focus');
+      var status_comment = document.getElementById("comment");
+      status_comment.style.display = 'block';
+    } else if (comment.hasClass('btn-click-focus')) { //如果有‘active’的样式，就祛除他的样式，添加‘test’的样式
+      comment.removeClass('btn-click-focus').addClass('btn-click-default');
+      var status_comment = document.getElementById("comment");
+      status_comment.style.display = 'none';
+    }
+  })
+  var update = $('.update');
+  update.on('click', function () {
+    if (update.hasClass('btn-click-default')) { //如果有‘test’的样式，就去除他的样式，添加‘active’的样式
+      update.removeClass('btn-click-default').addClass('btn-click-focus');
+      var status_upate = document.getElementById("update");
+      status_upate.style.display = 'block';
+    } else if (update.hasClass('btn-click-focus')) { //如果有‘active’的样式，就祛除他的样式，添加‘test’的样式
+      update.removeClass('btn-click-focus').addClass('btn-click-default');
+      var status_upate = document.getElementById("update");
+      // console.log(status_upate);
+      status_upate.style.display = 'none';
+    }
+  })
+  var messagebox = $('.messagebox');
+  messagebox.on('click', function () {
+    var status_messagebox = document.getElementById("messagebox");
+    // console.log(status_messagebox);
+    messagebox.removeClass('d-flex');
+    status_messagebox.style.display = 'none';
+  })
+</script>
+
+{{/block}}

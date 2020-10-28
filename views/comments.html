@@ -1,0 +1,122 @@
+{{extend '../_layout/layout.html'}}
+
+
+{{ block 'header'}}
+<link rel="stylesheet" href="/public/css/main.css">
+<style>
+    /* .comments{
+        width: auto;
+        height: 8em;
+        display: flex;
+        text-align: left;
+        justify-content: top;
+    } */
+    .content {
+        display: relative;
+    }
+
+    textarea {
+        /* border: none; */
+        /* width: 100%; */
+        /* width: 898px; */
+        height: 30vh;
+        background-color: #EEEEEE;
+        margin: 0 auto;
+        display: block;
+        border: none;
+        resize: none;
+        margin-top: 0.67rem;
+        padding: 0.43rem 0.53rem 0;
+        color: #999;
+        font-size: 0.64rem;
+        line-height: 0.96rem;
+        outline: none;
+    }
+
+    .post {
+        width: 12rem;
+    }
+</style>
+{{/block}}
+
+{{ block 'content'}}
+
+
+<div class='mainstage'>
+
+    <main role="main" class="container">
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+            <img class="mr-3" src="/public/img/logo.png" alt="" width="48" height="48">
+            <div class="lh-100">
+                <h6 class="mb-0 text-white lh-100">Jason Du</h6>
+                <small>Designed In Ashburn, VA @2020</small>
+            </div>
+        </div>
+
+
+        <div class="my-3 p-3 bg-white rounded shadow-sm">
+            <form class="form-signin" id='comments'>
+                <h6 class="border-bottom border-gray pb-2 mb-0">Comments</h6>
+                <input type="hidden" name="email" value={{ user.email }}>
+                <input type="hidden" name="nickname" value={{ user.nickname }}>
+                <input type="hidden" name="avator" value={{ user.avator }}>
+                <div class="media text-muted pt-3" id="dom">
+                    <div class="form-label-group">
+                        <textarea name="comments" id="content" cols="20" rows="8" placeholder="内容"></textarea>
+                    </div>
+                </div>
+
+                <small class="d-block text-right mt-3">
+                    <button class="btn btn-lg btn-primary btn-block post" type="submit">Post</button>
+                </small>
+            </form>
+
+        </div>
+    </main>
+</div>
+{{/block}}
+
+{{block 'script'}}
+<script src="/public/js/main.js"></script>
+<script type="text/javascript">
+    var dom = document.getElementById("dom");
+    var width =
+        // console.log(dom.style.width);    //30px  content的宽度
+        // console.log(window.getComputedStyle(dom,null)["width"]);    //30px
+        // console.log(dom.offsetWidth);    //80    content+padding+border
+        // console.log(dom.getBoundingClientRect().width);    //80
+        console.log(dom.scrollWidth); //70    content+padding
+    // console.log(dom.clientWidth );    //70
+    var content = document.getElementById("content");
+    console.log(content);
+    content.style.width = dom.scrollWidth + 'px';
+</script>
+<script src="/node_modules/jquery/dist/jquery.js"></script>
+<script>
+    $('#comments').on('submit', function (e) {
+        e.preventDefault();
+        var formData = $(this).serialize()
+        // console.log(formData);
+        $.ajax({
+            url: '/comments',
+            type: 'post',
+            data: formData,
+            dataType: 'json',
+            // withCredentials: true,
+            success: function (data) {
+                var status_code = data.status_code
+                if (status_code === 0) {
+                    window.alert('评论成功')
+                    window.location.href = '/main'
+                } else if (status_code === 1) {
+                    window.alert('邮箱已存在')
+                } else if (status_code === 2) {
+                    window.alert('用户名已存在')
+                } else if (status_code === 500) {
+                    window.alert('服务器忙，稍后重试')
+                }
+            }
+        })
+    })
+</script>
+{{/block}}
