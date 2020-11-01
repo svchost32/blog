@@ -4,6 +4,7 @@ var Comment = require('./model/comments')
 var md5 = require('blueimp-md5')
 const user = require('./model/user')
 const cmts = require('./model/comments')
+const consolep = require('./public/js/console')
 
 
 var router = express.Router()
@@ -216,5 +217,20 @@ router.get('/logout', function (req, res) {
     req.session.user = null
     res.redirect('/main')
 })
+
+router.get('/ip', function (req, res) {
+
+    // req.session.user = null
+    res.send('192.168.1.215')
+    res.end('192.168.1.215')
+})
+
+router.get('/console', function (req, res) {
+
+    // req.session.user = null
+    console.log(consolep.exec('dir'))
+    res.end('success')
+})
+
 
 module.exports = router
